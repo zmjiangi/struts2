@@ -10,18 +10,26 @@
 
     <constant name="struts.enable.DynamicMethodInvocation" value="true"/>
 
-    <package name="default" extends="struts-default">
-        <action name="index">
-            <result>/index.jsp</result>
+    <package name="product" namespace="/product" extends="struts-default">
+        <action name="input">
+            <result>/WEB-INF/pages/product/input.jsp</result>
+        </action>
+        <action name="save" class="com.gzyijian.action.ProductAction" method="save">
+            <result name="details">/WEB-INF/pages/product/details.jsp</result>
         </action>
     </package>
 
-    <package name="product" namespace="/product" extends="struts-default">
-        <action name="input">
-            <result>/WEB-INF/pages/input.jsp</result>
+    <package name="login" extends="struts-default">
+        <action name="login-ui">
+            <result>/WEB-INF/pages/login/login.jsp</result>
         </action>
-        <action name="save" class="com.gzyijian.action.ProductAction" method="save">
-            <result name="details">/WEB-INF/pages/details.jsp</result>
+
+        <action name="login" class="com.gzyijian.action.LoginAction" method="login">
+            <result name="login-success">/WEB-INF/pages/login/login-success.jsp</result>
+        </action>
+
+        <action name="logout" class="com.gzyijian.action.LoginAction" method="logout">
+            <result name="logout-success">/WEB-INF/pages/login/login.jsp</result>
         </action>
     </package>
 
