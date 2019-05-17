@@ -16,4 +16,13 @@
         </action>
     </package>
 
+    <package name="product" namespace="/product" extends="struts-default">
+        <action name="input">
+            <result>/WEB-INF/pages/input.jsp</result>
+        </action>
+        <action name="save" class="com.gzyijian.action.ProductAction" method="save">
+            <result name="details">/WEB-INF/pages/details.jsp</result>
+        </action>
+    </package>
+
 </struts>
