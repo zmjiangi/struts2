@@ -13,6 +13,10 @@
     <title>Details Page</title>
 </head>
 <body>
+<%--name:${product.name}<br/><br/>
+desc:${product.desc}<br/><br/>
+price:${product.price}--%>
+
 <s:debug></s:debug><br/><br/>
 name--:<s:property value="[0].name"/><br/><br/>
 desc--<s:property value="[1].desc"/><br/><br/>
