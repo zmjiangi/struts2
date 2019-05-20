@@ -58,9 +58,9 @@
 
     <package name="result-test" namespace="/result" extends="struts-default">
         <action name="test" class="com.gzyijian.action.ResultActionTest">
-            <result name="dispatcher" type="dispatcher">/WEB-INF/pages/result/dispatcher.jsp</result>
+            <result name="dispatcher" type="dispatcher">/result/dispatcher.jsp</result>
 
-            <result name="redirect" type="redirect">/WEB-INF/pages/result/dispatcher.jsp</result>
+            <result name="redirect" type="redirect">/result/redirect.jsp</result>
 
             <result name="chain" type="chain">
                 <param name="namespace">/result</param>
@@ -81,11 +81,11 @@
         </action>
 
         <action name="chain" class="com.gzyijian.action.ResultActionTest" method="chain">
-            <result name="chain">/WEB-INF/pages/result/chain.jsp</result>
+            <result name="chain">/result/chain.jsp</result>
         </action>
 
         <action name="redirectAction" class="com.gzyijian.action.ResultActionTest" method="redirect">
-            <result name="redirectAction">/WEB-INF/pages/result/redirectAction.jsp</result>
+            <result name="redirectAction">/result/redirectAction.jsp</result>
         </action>
 
     </package>
