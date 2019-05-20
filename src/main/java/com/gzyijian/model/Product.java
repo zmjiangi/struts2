@@ -1,5 +1,6 @@
 package com.gzyijian.model;
 
+import com.opensymphony.xwork2.ActionSupport;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -9,7 +10,7 @@ import java.io.Serializable;
  * @date 2019-5-17
  */
 @Data
-public class Product implements Serializable {
+public class Product extends ActionSupport implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -32,5 +33,16 @@ public class Product implements Serializable {
         this.name = name;
         this.desc = desc;
         this.price = price;
+    }
+
+    @Override
+    public String execute() throws Exception {
+        System.out.println("Product.execute");
+        return SUCCESS;
+    }
+
+    public String save(){
+        System.out.println("Product.save");
+        return SUCCESS;
     }
 }

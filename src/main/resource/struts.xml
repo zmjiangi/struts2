@@ -8,6 +8,7 @@
 
     <constant name="struts.devMode" value="true"/>
 
+    <!-- 动态方法调用 -->
     <constant name="struts.enable.DynamicMethodInvocation" value="true"/>
 
     <!-- 配置 Struts 可以受理的请求的扩展名 -->
@@ -19,6 +20,11 @@
         </action>
         <action name="save" class="com.gzyijian.action.ProductAction" method="save">
             <result name="details">/WEB-INF/pages/product/details.jsp</result>
+        </action>
+
+        <!-- 同一个Action的不同方法要处理的请求使用相同的配置（result等），则使用动态方法调用 -->
+        <action name="product" class="com.gzyijian.model.Product">
+            <result>/result/success.jsp</result>
         </action>
     </package>
 
