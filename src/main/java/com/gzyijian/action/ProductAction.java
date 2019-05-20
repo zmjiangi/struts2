@@ -3,6 +3,8 @@ package com.gzyijian.action;
 import lombok.Data;
 
 /**
+ * Struts2 HelloWorld
+ *
  * @author zmjiangi
  * @date 2019-5-17
  */
