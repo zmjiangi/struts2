@@ -33,4 +33,23 @@
         </action>
     </package>
 
+    <package name="web-resource" namespace="/test" extends="struts-default">
+        <action name="testActionContext" class="com.gzyijian.action.WebResourceActionTest" method="testActionContext">
+            <result>/WEB-INF/pages/webResource/success.jsp</result>
+        </action>
+
+        <action name="testAware" class="com.gzyijian.action.WebResourceActionTest" method="testAware">
+            <result>/WEB-INF/pages/webResource/success.jsp</result>
+        </action>
+
+        <action name="testServletActionContext" class="com.gzyijian.action.WebResourceActionTest" method="testServletActionContext">
+            <result>/WEB-INF/pages/webResource/success.jsp</result>
+        </action>
+
+        <action name="testServletAware" class="com.gzyijian.action.WebResourceActionTest" method="testServletAware">
+            <result>/WEB-INF/pages/webResource/success.jsp</result>
+        </action>
+
+    </package>
+
 </struts>
