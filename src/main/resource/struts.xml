@@ -22,10 +22,16 @@
             <result name="details">/WEB-INF/pages/product/details.jsp</result>
         </action>
 
-        <!-- 同一个Action的不同方法要处理的请求使用相同的配置（result等），则使用动态方法调用 -->
-        <action name="product" class="com.gzyijian.model.Product">
-            <result>/result/success.jsp</result>
+        <!-- 动态方法调用: 在同一个Action的不同方法要处理的请求使用相同的配置（result等） -->
+        <action name="product" class="com.gzyijian.action.ProductAction">
+            <result>/WEB-INF/pages/product/success.jsp</result>
         </action>
+
+        <!-- 通配符映射: 把多个彼此相似的映射关系简化为一个映射关系 -->
+        <action name="product_*" class="com.gzyijian.action.ProductAction" method="{1}">
+            <result>/WEB-INF/pages/product/{1}.jsp</result>
+        </action>
+
     </package>
 
     <package name="login" extends="struts-default">
