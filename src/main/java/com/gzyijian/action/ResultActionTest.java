@@ -1,6 +1,7 @@
 package com.gzyijian.action;
 
 import com.opensymphony.xwork2.ActionSupport;
+import lombok.Getter;
 import lombok.Setter;
 
 /**
@@ -13,6 +14,10 @@ public class ResultActionTest extends ActionSupport {
 
     @Setter
     private String param;
+
+    @Getter
+    @Setter
+    private String deliveryParam;
 
     @Override
     public String execute() throws Exception {
@@ -29,22 +34,26 @@ public class ResultActionTest extends ActionSupport {
 
         String chainString = "chain";
         if (chainString.equals(param)) {
+            deliveryParam = "chainParamValue";
             return "chain";
         }
 
         String redirectActionString = "redirectAction";
         if (redirectActionString.equals(param)) {
+            deliveryParam = "redirectActionParamValue";
             return "redirectAction";
         }
         return super.execute();
     }
 
     public String chain() {
+        System.out.println("deliveryParam = " + deliveryParam);
         return "chain";
     }
 
 
-    public String redirect() {
+    public String redirectAction() {
+        System.out.println("deliveryParam = " + deliveryParam);
         return "redirectAction";
     }
 }

@@ -65,17 +65,20 @@
             <result name="chain" type="chain">
                 <param name="namespace">/result</param>
                 <param name="actionName">chain</param>
+                <param name="deliveryParam">${deliveryParam}</param>
             </result>
 
             <!-- 重定向到另一个action -->
 
             <!-- 方式一 -->
-            <!--<result name="redirectAction" type="redirect">/result/redirectAction</result>-->
+            <!-- 多个参数传递连接符&amp; -->
+            <!--<result name="redirectAction" type="redirect">/result/redirectAction?deliveryParam=${deliveryParam}</result>-->
 
             <!-- 方式二 -->
             <result name="redirectAction" type="redirectAction">
                 <param name="namespace">/result</param>
                 <param name="actionName">redirectAction</param>
+                <param name="deliveryParam">${deliveryParam}</param>
             </result>
 
         </action>
@@ -84,7 +87,7 @@
             <result name="chain">/result/chain.jsp</result>
         </action>
 
-        <action name="redirectAction" class="com.gzyijian.action.ResultActionTest" method="redirect">
+        <action name="redirectAction" class="com.gzyijian.action.ResultActionTest" method="redirectAction">
             <result name="redirectAction">/result/redirectAction.jsp</result>
         </action>
 
