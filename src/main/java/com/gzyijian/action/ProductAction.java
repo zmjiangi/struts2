@@ -1,6 +1,5 @@
 package com.gzyijian.action;
 
-import com.opensymphony.xwork2.ActionSupport;
 import lombok.Data;
 
 /**
@@ -10,40 +9,46 @@ import lombok.Data;
  * @date 2019-5-17
  */
 @Data
-public class ProductAction extends ActionSupport {
+public class ProductAction {
 
     private String name;
     private String desc;
     private Double price;
 
+    public String input() {
+        System.out.println();
+        System.out.println("ProductAction.input");
+        return "input";
+    }
+
     public String save() {
         System.out.println(this);
         System.out.println("ProductAction.save");
-        return SUCCESS;
+        return "save";
     }
 
     public String delete() {
         System.out.println(this);
         System.out.println("ProductAction.delete");
-        return SUCCESS;
+        return "delete";
     }
 
     public String update() {
         System.out.println(this);
         System.out.println("ProductAction.update");
-        return SUCCESS;
+        return "update";
     }
 
     public String query() {
         System.out.println(this);
         System.out.println("ProductAction.query");
-        return SUCCESS;
+        return "query";
     }
 
     public String list() {
         System.out.println(this);
         System.out.println("ProductAction.list");
-        return SUCCESS;
+        return "list";
     }
 
 }

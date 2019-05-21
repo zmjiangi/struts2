@@ -27,7 +27,7 @@ public class StrutsPrepareAndExecuteFilter implements Filter {
 
         String inputServletPath = "/product/input.action";
         if (inputServletPath.equals(servletPath)) {
-            req.getRequestDispatcher("/WEB-INF/pages/product/input.jsp").forward(request, response);
+            req.getRequestDispatcher("/WEB-INF/pages/product/product-input.jsp").forward(request, response);
             return;
         }
 
@@ -40,7 +40,7 @@ public class StrutsPrepareAndExecuteFilter implements Filter {
             System.out.println("product = " + product);
 
             req.setAttribute("product", product);
-            req.getRequestDispatcher("/WEB-INF/pages/product/details.jsp").forward(request, response);
+            req.getRequestDispatcher("/WEB-INF/pages/product/product-details.jsp").forward(request, response);
             return;
         }
 

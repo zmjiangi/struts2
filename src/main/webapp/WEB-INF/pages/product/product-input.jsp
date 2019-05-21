@@ -11,7 +11,7 @@
     <title>Input JSP</title>
 </head>
 <body>
-<form action="save.action" method="post">
+<form action="product-query.action" method="post">
     name:<input name="name" type="text"/><br/><br/>
     desc:<input name="desc" type="text"/><br/><br/>
     price:<input name="price" type="text"/><br/><br/>

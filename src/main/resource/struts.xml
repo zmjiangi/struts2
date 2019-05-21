@@ -14,26 +14,6 @@
     <!-- 配置 Struts 可以受理的请求的扩展名 -->
     <constant name="struts.action.extension" value="action,do,"></constant>
 
-    <package name="product" namespace="/product" extends="struts-default">
-        <action name="input">
-            <result>/WEB-INF/pages/product/input.jsp</result>
-        </action>
-        <action name="save" class="com.gzyijian.action.ProductAction" method="save">
-            <result name="details">/WEB-INF/pages/product/details.jsp</result>
-        </action>
-
-        <!-- 动态方法调用: 在同一个Action的不同方法要处理的请求使用相同的配置（result等） -->
-        <action name="product" class="com.gzyijian.action.ProductAction">
-            <result>/WEB-INF/pages/product/success.jsp</result>
-        </action>
-
-        <!-- 通配符映射: 把多个彼此相似的映射关系简化为一个映射关系 -->
-        <action name="product_*" class="com.gzyijian.action.ProductAction" method="{1}">
-            <result>/WEB-INF/pages/product/{1}.jsp</result>
-        </action>
-
-    </package>
-
     <package name="login" extends="struts-default">
         <action name="login-ui">
             <result>/WEB-INF/pages/login/login.jsp</result>
@@ -101,6 +81,41 @@
 
         <action name="redirectAction" class="com.gzyijian.action.ResultActionTest" method="redirectAction">
             <result name="redirectAction">/result/redirectAction.jsp</result>
+        </action>
+
+    </package>
+
+    <package name="product" namespace="/product" extends="struts-default">
+
+        <global-allowed-methods>regex:.*</global-allowed-methods>
+
+        <action name="input">
+            <result>/WEB-INF/pages/product/product-input.jsp</result>
+        </action>
+        <action name="save" class="com.gzyijian.action.ProductAction" method="save">
+            <result name="details">/WEB-INF/pages/product/product-details.jsp</result>
+        </action>
+
+        <!-- 动态方法调用: 在同一个Action的不同方法要处理的请求使用相同的配置（result等） -->
+        <action name="product" class="com.gzyijian.action.ProductAction">
+            <result>/WEB-INF/pages/product/success.jsp</result>
+        </action>
+
+        <!-- 通配符映射: 把多个彼此相似的映射关系简化为一个映射关系 -->
+        <action name="product-*" class="com.gzyijian.action.ProductAction" method="{1}">
+            <result name="{1}">/WEB-INF/pages/product/product-{1}.jsp</result>
+        </action>
+
+    </package>
+
+    <package name="employee" namespace="/" extends="struts-default">
+
+        <global-allowed-methods>regex:.*</global-allowed-methods>
+
+        <action name="employee-*"
+                class="com.gzyijian.action.EmployeeAction"
+                method="{1}">
+            <result name="{1}">/WEB-INF/pages/employee/employee-{1}.jsp</result>
         </action>
 
     </package>
