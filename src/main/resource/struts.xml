@@ -160,4 +160,27 @@
 
     </package>
 
+
+    <package name="user" namespace="/user" extends="struts-default">
+
+        <global-allowed-methods>regex:.*</global-allowed-methods>
+
+        <!-- 页面跳转action begin-->
+        <action name="user-*"
+                class="com.gzyijian.action.UserAction"
+                method="{1}">
+            <result name="{1}">/WEB-INF/pages/user/{1}.jsp</result>
+        </action>
+        <!-- 页面跳转action end-->
+
+        <!-- 业务逻辑处理action -->
+        <action name="api-user-*"
+                class="com.gzyijian.action.UserAction"
+                method="{1}">
+            <result type="redirectAction">user-list</result>
+        </action>
+        <!-- 业务逻辑处理action end-->
+
+    </package>
+
 </struts>

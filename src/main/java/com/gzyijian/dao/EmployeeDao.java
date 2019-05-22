@@ -12,7 +12,7 @@ import java.util.*;
  */
 public class EmployeeDao {
 
-    private final static Map<String, Employee> EMPLOYEE_MAP = new HashMap<>(16);
+    private final static Map<String, Employee> EMPLOYEE_MAP = new HashMap<>(8);
 
     static {
         EMPLOYEE_MAP.put("09314163-fc27-4db2-8f5e-557a7402a491", new Employee("09314163-fc27-4db2-8f5e-557a7402a491", "AA", "aa"));
@@ -30,7 +30,6 @@ public class EmployeeDao {
 
     public void delete(String id) {
         EMPLOYEE_MAP.remove(id);
-        System.out.println();
     }
 
     public void update(Employee employee) {
