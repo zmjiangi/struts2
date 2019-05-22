@@ -108,15 +108,55 @@
 
     </package>
 
-    <package name="employee" namespace="/" extends="struts-default">
+    <package name="employeeWildcard" namespace="/" extends="struts-default">
 
         <global-allowed-methods>regex:.*</global-allowed-methods>
 
         <action name="employee-*"
-                class="com.gzyijian.action.EmployeeAction"
+                class="com.gzyijian.action.EmployeeWildcardAction"
                 method="{1}">
             <result name="{1}">/WEB-INF/pages/employee/employee-{1}.jsp</result>
         </action>
+
+    </package>
+
+    <package name="employee" namespace="/employee" extends="struts-default">
+
+        <global-allowed-methods>regex:.*</global-allowed-methods>
+
+        <!-- 页面跳转action begin-->
+        <action name="list"
+                class="com.gzyijian.action.EmployeeAction"
+                method="list">
+            <result name="list">/WEB-INF/pages/employee/list.jsp</result>
+        </action>
+
+        <action name="edit"
+                class="com.gzyijian.action.EmployeeAction"
+                method="edit">
+            <result name="edit">/WEB-INF/pages/employee/edit.jsp</result>
+        </action>
+        <!-- 页面跳转action end-->
+
+        <!-- 业务逻辑处理action -->
+        <action name="save"
+                class="com.gzyijian.action.EmployeeAction"
+                method="save">
+            <result name="save-success" type="redirectAction">list</result>
+        </action>
+
+        <action name="delete"
+                class="com.gzyijian.action.EmployeeAction"
+                method="delete">
+            <result name="delete-success" type="redirectAction">list</result>
+        </action>
+
+        <action name="update"
+                class="com.gzyijian.action.EmployeeAction"
+                method="update">
+            <result name="update-success" type="redirectAction">list</result>
+        </action>
+        <!-- 业务逻辑处理action end-->
 
     </package>
 

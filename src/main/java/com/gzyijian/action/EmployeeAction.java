@@ -1,112 +1,77 @@
 package com.gzyijian.action;
 
-import com.gzyijian.dao.DepartmentDao;
-import com.gzyijian.dao.RoleDao;
+import com.gzyijian.dao.EmployeeDao;
+import com.gzyijian.model.Employee;
+import com.opensymphony.xwork2.ActionSupport;
+import lombok.Getter;
+import lombok.Setter;
 import org.apache.struts2.interceptor.RequestAware;
 
-import java.util.List;
 import java.util.Map;
 
 /**
  * @author zmjiangi
- * @date 2019-5-20
+ * @date 2019-5-21
  */
-public class EmployeeAction implements RequestAware {
+public class EmployeeAction extends ActionSupport implements RequestAware {
 
-    private Map<String, Object> requestMap = null;
+    @Getter
+    @Setter
+    private String id;
 
-    private DepartmentDao departmentDao = new DepartmentDao();
-    private RoleDao roleDao = new RoleDao();
+    @Getter
+    @Setter
+    private String firstName;
 
-    private String name;
-    private String password;
+    @Getter
+    @Setter
+    private String lastName;
 
-    private String gender;
-    private String dept;
+    private Map<String, Object> request;
 
-    private List<String> roles;
-    private String desc;
+    private EmployeeDao employeeDao = new EmployeeDao();
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public String getGender() {
-        return gender;
-    }
-
-    public void setGender(String gender) {
-        this.gender = gender;
-    }
-
-    public String getDept() {
-        return dept;
-    }
-
-    public void setDept(String dept) {
-        this.dept = dept;
-    }
-
-    public List<String> getRoles() {
-        return roles;
-    }
-
-    public void setRoles(List<String> roles) {
-        this.roles = roles;
-    }
-
-    public String getDesc() {
-        return desc;
-    }
-
-    public void setDesc(String desc) {
-        this.desc = desc;
+    public String list() {
+        request.put("list", employeeDao.list());
+        return "list";
     }
 
     public String save() {
-        System.out.println("save: " + this);
-        return "save";
+        Employee employee = new Employee(firstName, lastName);
+        employeeDao.save(employee);
+        return "save-success";
     }
 
     public String delete() {
-        System.out.println(this);
-        System.out.println("ProductAction.delete");
-        return "input";
+        employeeDao.delete(id);
+        return "delete-success";
     }
 
+    /**
+     * 跳转到编辑页面
+     */
+    public String edit() {
+        Employee employee = employeeDao.fetch(id);
+        firstName = employee.getFirstName();
+        lastName = employee.getLastName();
+        return "edit";
+    }
+
+    /**
+     * 保存修改
+     *
+     * @return
+     */
     public String update() {
-        System.out.println(this);
-        System.out.println("ProductAction.delete");
-        return "input";
+        Employee employee = new Employee(id, firstName, lastName);
+        employeeDao.update(employee);
+        return "update-success";
     }
 
-    public String input() {
-        requestMap.put("depts", departmentDao.list());
-        requestMap.put("roles", roleDao.list());
-        return "input";
-    }
 
     @Override
     public void setRequest(Map<String, Object> request) {
-        this.requestMap = request;
+        this.request = request;
     }
 
-    @Override
-    public String toString() {
-        return "Employee [name=" + name + ", password=" + password
-                + ", gender=" + gender + ", dept=" + dept + ", roles=" + roles
-                + ", desc=" + desc + "]";
-    }
 }
