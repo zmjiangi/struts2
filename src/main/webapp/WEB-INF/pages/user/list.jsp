@@ -29,14 +29,14 @@
         <td>LastName</td>
         <td></td>
     </tr>
-    <s:iterator value="#request.list" var="employee">
+    <s:iterator value="#request.list">
         <tr>
             <td>${id}</td>
             <td>${firstName}</td>
             <td>${lastName}</td>
             <td>
-                <a href="user-edit?id=${employee.id}">Edit</a>&nbsp;
-                <a href="api-user-delete?id=${employee.id}">Delete</a>
+                <a href="user-edit?id=${id}">Edit</a>&nbsp;
+                <a href="api-user-delete?id=${id}">Delete</a>
             </td>
         </tr>
     </s:iterator>

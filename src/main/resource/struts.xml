@@ -161,13 +161,38 @@
     </package>
 
 
+    <!--<package name="user" namespace="/user" extends="struts-default">
+
+        <global-allowed-methods>regex:.*</global-allowed-methods>
+
+        &lt;!&ndash; 页面跳转action begin&ndash;&gt;
+        <action name="user-*"
+                class="com.gzyijian.action.UserActionVersion1"
+                method="{1}">
+            <result name="{1}">/WEB-INF/pages/user/{1}.jsp</result>
+        </action>
+        &lt;!&ndash; 页面跳转action end&ndash;&gt;
+
+        &lt;!&ndash; 业务逻辑处理action &ndash;&gt;
+        <action name="api-user-*"
+                class="com.gzyijian.action.UserActionVersion1"
+                method="{1}">
+            <result type="redirectAction">user-list</result>
+        </action>
+        &lt;!&ndash; 业务逻辑处理action end&ndash;&gt;
+
+    </package>-->
+
     <package name="user" namespace="/user" extends="struts-default">
+
+        <!-- 配置使用 paramsPrepareParamsStack 作为默认的拦截器栈 -->
+        <default-interceptor-ref name="paramsPrepareParamsStack"></default-interceptor-ref>
 
         <global-allowed-methods>regex:.*</global-allowed-methods>
 
         <!-- 页面跳转action begin-->
         <action name="user-*"
-                class="com.gzyijian.action.UserAction"
+                class="com.gzyijian.action.UserActionVersion2"
                 method="{1}">
             <result name="{1}">/WEB-INF/pages/user/{1}.jsp</result>
         </action>
@@ -175,12 +200,13 @@
 
         <!-- 业务逻辑处理action -->
         <action name="api-user-*"
-                class="com.gzyijian.action.UserAction"
+                class="com.gzyijian.action.UserActionVersion2"
                 method="{1}">
             <result type="redirectAction">user-list</result>
         </action>
         <!-- 业务逻辑处理action end-->
 
     </package>
+
 
 </struts>
