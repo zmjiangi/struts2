@@ -183,16 +183,49 @@
 
     </package>-->
 
+    <!--<package name="user" namespace="/user" extends="struts-default">
+
+        &lt;!&ndash; 配置使用 paramsPrepareParamsStack 作为默认的拦截器栈 &ndash;&gt;
+        <default-interceptor-ref name="paramsPrepareParamsStack"></default-interceptor-ref>
+
+        <global-allowed-methods>regex:.*</global-allowed-methods>
+
+        &lt;!&ndash; 页面跳转action begin&ndash;&gt;
+        <action name="user-*"
+                class="com.gzyijian.action.UserActionVersion2"
+                method="{1}">
+            <result name="{1}">/WEB-INF/pages/user/{1}.jsp</result>
+        </action>
+        &lt;!&ndash; 页面跳转action end&ndash;&gt;
+
+        &lt;!&ndash; 业务逻辑处理action &ndash;&gt;
+        <action name="api-user-*"
+                class="com.gzyijian.action.UserActionVersion2"
+                method="{1}">
+            <result type="redirectAction">user-list</result>
+        </action>
+        &lt;!&ndash; 业务逻辑处理action end&ndash;&gt;
+
+    </package>-->
+
     <package name="user" namespace="/user" extends="struts-default">
 
+        <interceptors>
+            <interceptor-stack name="yijianStack">
+                <interceptor-ref name="paramsPrepareParamsStack">
+                    <param name="prepare.alwaysInvokePrepare">false</param>
+                </interceptor-ref>
+            </interceptor-stack>
+        </interceptors>
+        
         <!-- 配置使用 paramsPrepareParamsStack 作为默认的拦截器栈 -->
-        <default-interceptor-ref name="paramsPrepareParamsStack"></default-interceptor-ref>
+        <default-interceptor-ref name="yijianStack"></default-interceptor-ref>
 
         <global-allowed-methods>regex:.*</global-allowed-methods>
 
         <!-- 页面跳转action begin-->
         <action name="user-*"
-                class="com.gzyijian.action.UserActionVersion2"
+                class="com.gzyijian.action.UserActionVersion3"
                 method="{1}">
             <result name="{1}">/WEB-INF/pages/user/{1}.jsp</result>
         </action>
@@ -200,7 +233,7 @@
 
         <!-- 业务逻辑处理action -->
         <action name="api-user-*"
-                class="com.gzyijian.action.UserActionVersion2"
+                class="com.gzyijian.action.UserActionVersion3"
                 method="{1}">
             <result type="redirectAction">user-list</result>
         </action>

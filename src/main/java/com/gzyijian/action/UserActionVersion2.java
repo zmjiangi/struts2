@@ -15,7 +15,7 @@ import java.util.Map;
  * @author zmjiangi
  * @date 2019-5-22
  */
-public class UserActionVersion2 extends ActionSupport implements ModelDriven, RequestAware {
+public class UserActionVersion2 extends ActionSupport implements ModelDriven<User>, RequestAware {
 
     @Getter
     @Setter
@@ -90,7 +90,7 @@ public class UserActionVersion2 extends ActionSupport implements ModelDriven, Re
     }
 
     @Override
-    public Object getModel() {
+    public User getModel() {
         /// 判断是 Create 还是 Edit.
         // 若为Create, 则 user = new User();
         // 若为Edit, 则 user = userDao.fetch(id);

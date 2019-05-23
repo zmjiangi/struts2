@@ -4,6 +4,7 @@ import com.gzyijian.dao.UserDao;
 import com.gzyijian.model.User;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
+import com.opensymphony.xwork2.Preparable;
 import lombok.Getter;
 import lombok.Setter;
 import org.apache.struts2.interceptor.RequestAware;
@@ -12,13 +13,17 @@ import java.util.Map;
 
 /**
  * @author zmjiangi
- * @date 2019-5-22
+ * @date 2019-5-23
  */
-public class UserAction extends ActionSupport implements ModelDriven, RequestAware {
+public class UserActionVersion3 extends ActionSupport implements ModelDriven<User>, Preparable, RequestAware {
 
     @Getter
     @Setter
     private User user;
+
+    @Getter
+    @Setter
+    private String id;
 
     private Map<String, Object> request;
 
@@ -32,6 +37,10 @@ public class UserAction extends ActionSupport implements ModelDriven, RequestAwa
     public String list() {
         request.put("list", userDao.list());
         return "list";
+    }
+
+    public void prepareSave() {
+        user = new User();
     }
 
     /**
@@ -50,19 +59,25 @@ public class UserAction extends ActionSupport implements ModelDriven, RequestAwa
      * @return
      */
     public String delete() {
-        userDao.delete(user.getId());
+        userDao.delete(id);
         return SUCCESS;
+    }
+
+
+    public void prepareEdit() {
+        user = userDao.fetch(id);
     }
 
     /**
      * 跳转到编辑用户页面
      */
     public String edit() {
-        User userDb = userDao.fetch(user.getId());
-        user.setId(userDb.getId());
-        user.setFirstName(userDb.getFirstName());
-        user.setLastName(userDb.getLastName());
         return "edit";
+    }
+
+    public void prepareUpdate() {
+        /// 这里看情况，如果表单只有 user 实例的部分属性，那么 user = userDao.fetch(id);
+        user = new User();
     }
 
     /**
@@ -81,8 +96,12 @@ public class UserAction extends ActionSupport implements ModelDriven, RequestAwa
     }
 
     @Override
-    public Object getModel() {
-        user = new User();
+    public User getModel() {
         return user;
+    }
+
+    @Override
+    public void prepare() throws Exception {
+        System.out.println("UserActionVersion3.prepare");
     }
 }
