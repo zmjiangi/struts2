@@ -24,6 +24,11 @@ public class Department implements Serializable {
      */
     private String name;
 
+    /**
+     * manager
+     */
+    private Manager manager;
+
     public Department() {
 
     }
