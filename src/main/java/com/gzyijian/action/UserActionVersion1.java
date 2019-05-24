@@ -11,6 +11,8 @@ import org.apache.struts2.interceptor.RequestAware;
 import java.util.Map;
 
 /**
+ * 使用 ModelDriven 拦截器将 user 实例对象压入拦截器栈
+ *
  * @author zmjiangi
  * @date 2019-5-22
  */

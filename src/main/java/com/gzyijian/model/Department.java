@@ -1,41 +1,35 @@
 package com.gzyijian.model;
 
+import lombok.Data;
+
+import java.io.Serializable;
+
 /**
  * 部门表
  *
  * @author zmjiangi
  * @date 2019-5-21
  */
-public class Department {
+@Data
+public class Department implements Serializable {
+    private static final long serialVersionUID = 1L;
 
-    private Integer deptId;
+    /**
+     * id
+     */
+    private String id;
 
-    private String deptName;
-
-    public Integer getDeptId() {
-        return deptId;
-    }
-
-    public void setDeptId(Integer deptId) {
-        this.deptId = deptId;
-    }
-
-    public String getDeptName() {
-        return deptName;
-    }
-
-    public void setDeptName(String deptName) {
-        this.deptName = deptName;
-    }
-
-    public Department(Integer deptId, String deptName) {
-        super();
-        this.deptId = deptId;
-        this.deptName = deptName;
-    }
+    /**
+     * name
+     */
+    private String name;
 
     public Department() {
-        // TODO Auto-generated constructor stub
+
     }
 
+    public Department(String id, String name) {
+        this.id = id;
+        this.name = name;
+    }
 }

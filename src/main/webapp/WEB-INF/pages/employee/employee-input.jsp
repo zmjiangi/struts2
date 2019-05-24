@@ -21,10 +21,10 @@
 	
 		<s:radio name="gender" list="#{'1':'Male','0':'Female' }" label="Gender"></s:radio>
 	
-		<s:select list="#request.depts" listKey="deptId"
-			listValue="deptName" name="dept" label="Department"></s:select>
-		<s:checkboxlist list="#request.roles" listKey="roleId"
-			listValue="roleName" name="roles" label="Role"></s:checkboxlist>
+		<s:select list="#request.depts" listKey="id"
+			listValue="name" name="dept" label="Department"></s:select>
+		<s:checkboxlist list="#request.roles" listKey="id"
+			listValue="name" name="roles" label="Role"></s:checkboxlist>
 	
 		<s:textarea name="desc" label="Desc"></s:textarea>
 		<s:submit></s:submit>

@@ -8,6 +8,8 @@ import java.util.List;
 import java.util.Map;
 
 /**
+ * 使用通配符映射请求 实现crud
+ *
  * @author zmjiangi
  * @date 2019-5-20
  */

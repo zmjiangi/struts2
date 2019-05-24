@@ -10,10 +10,9 @@ import java.io.Serializable;
  */
 @Data
 public class Product implements Serializable {
-
     private static final long serialVersionUID = 1L;
 
-    private Integer id;
+    private String id;
     private String name;
     private String desc;
     private Double price;
@@ -27,7 +26,7 @@ public class Product implements Serializable {
         this.price = price;
     }
 
-    public Product(Integer id, String name, String desc, Double price) {
+    public Product(String id, String name, String desc, Double price) {
         this.id = id;
         this.name = name;
         this.desc = desc;

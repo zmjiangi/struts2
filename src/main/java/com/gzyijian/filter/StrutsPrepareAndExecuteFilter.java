@@ -36,7 +36,7 @@ public class StrutsPrepareAndExecuteFilter implements Filter {
             String name = request.getParameter("name");
             String desc = request.getParameter("desc");
             String price = request.getParameter("price");
-            Product product = new Product(1, name, desc, Double.parseDouble(price));
+            Product product = new Product("1", name, desc, Double.parseDouble(price));
             System.out.println("product = " + product);
 
             req.setAttribute("product", product);

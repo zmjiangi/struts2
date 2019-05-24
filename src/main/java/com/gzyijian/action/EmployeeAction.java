@@ -10,6 +10,8 @@ import org.apache.struts2.interceptor.RequestAware;
 import java.util.Map;
 
 /**
+ * 不使用通配符映射请求 实现crud
+ *
  * @author zmjiangi
  * @date 2019-5-21
  */

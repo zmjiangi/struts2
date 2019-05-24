@@ -12,6 +12,8 @@ import org.apache.struts2.interceptor.RequestAware;
 import java.util.Map;
 
 /**
+ * 基于 UserActionVersion1 使用 paramsPrepareParamsStack 简化 edit
+ *
  * @author zmjiangi
  * @date 2019-5-22
  */

@@ -13,9 +13,9 @@ public class RoleDao {
 
     public List<Role> list() {
         return Arrays.asList(
-                new Role(2001, "XXX"),
-                new Role(2002, "YYY"),
-                new Role(2003, "ZZZ")
+                new Role("2001", "XXX"),
+                new Role("2002", "YYY"),
+                new Role("2003", "ZZZ")
         );
     }
 
