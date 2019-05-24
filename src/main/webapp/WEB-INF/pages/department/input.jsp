@@ -13,10 +13,15 @@
     <title>Input Page</title>
 </head>
 <body>
-<s:form action="api-department-testComplexAttribute" method="POST">
+<s:form action="api-department-test" method="POST">
     <s:textfield name="name" label="DepartName"></s:textfield>
     <s:textfield name="manager.name" label="ManagerName"></s:textfield>
     <s:textfield name="manager.birth" label="ManagerBirth"></s:textfield>
+
+    <s:textfield name="employees[0].firstName" label="employeeFirstName1"></s:textfield>
+    <s:textfield name="employees[0].lastName" label="employeeLastName1"></s:textfield>
+    <s:textfield name="employees[1].firstName" label="employeeFirstName2"></s:textfield>
+    <s:textfield name="employees[1].lastName" label="employeeLastName2"></s:textfield>
     <s:submit></s:submit>
 </s:form>
 </body>

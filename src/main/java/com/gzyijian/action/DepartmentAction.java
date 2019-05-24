@@ -23,22 +23,23 @@ public class DepartmentAction extends ActionSupport implements ModelDriven<Depar
     @Setter
     private Department department;
 
+
     @Override
     public String input() {
         return INPUT;
     }
 
 
-    public void prepareTestComplexAttribute() {
+    public void prepareTest() {
         department = new Department();
     }
 
     /**
-     * 测试类型转换与复杂属性配合使用
+     * 测试类型转换与复杂属性、Collection 配合使用
      *
      * @return
      */
-    public String testComplexAttribute() {
+    public String test() {
         System.out.println(department);
         return SUCCESS;
     }

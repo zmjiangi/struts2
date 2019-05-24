@@ -3,6 +3,7 @@ package com.gzyijian.model;
 import lombok.Data;
 
 import java.io.Serializable;
+import java.util.Collection;
 
 /**
  * 部门表
@@ -28,6 +29,11 @@ public class Department implements Serializable {
      * manager
      */
     private Manager manager;
+
+    /**
+     * employees
+     */
+    private Collection<Employee> employees;
 
     public Department() {
 
