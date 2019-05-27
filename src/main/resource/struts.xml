@@ -217,7 +217,7 @@
                 </interceptor-ref>
             </interceptor-stack>
         </interceptors>
-        
+
         <!-- 配置使用 paramsPrepareParamsStack 作为默认的拦截器栈 -->
         <default-interceptor-ref name="yijianStack"></default-interceptor-ref>
 
@@ -270,6 +270,40 @@
                 class="com.gzyijian.action.DepartmentAction"
                 method="{1}">
             <result type="redirectAction">department-list</result>
+        </action>
+        <!-- 业务逻辑处理 action end -->
+
+    </package>
+
+    <package name="conversion" namespace="/conversion" extends="struts-default">
+
+        <interceptors>
+            <interceptor-stack name="yijianStack">
+                <interceptor-ref name="paramsPrepareParamsStack">
+                    <param name="prepare.alwaysInvokePrepare">false</param>
+                </interceptor-ref>
+            </interceptor-stack>
+        </interceptors>
+
+        <!-- 配置使用 paramsPrepareParamsStack 作为默认的拦截器栈 -->
+        <default-interceptor-ref name="yijianStack"></default-interceptor-ref>
+
+        <global-allowed-methods>regex:.*</global-allowed-methods>
+
+        <!-- 页面跳转 action begin -->
+        <action name="conversion-*"
+                class="com.gzyijian.action.ConversionAction"
+                method="{1}">
+            <result name="{1}">/WEB-INF/pages/conversion/{1}.jsp</result>
+        </action>
+        <!-- 页面跳转 action end -->
+
+        <!-- 业务逻辑处理 action -->
+        <action name="api-conversion-*"
+                class="com.gzyijian.action.ConversionAction"
+                method="{1}">
+            <result>/WEB-INF/pages/conversion/success.jsp</result>
+            <result name="input">/WEB-INF/pages/conversion/input.jsp</result>
         </action>
         <!-- 业务逻辑处理 action end -->
 
