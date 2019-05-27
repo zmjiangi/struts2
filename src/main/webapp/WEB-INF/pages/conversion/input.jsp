@@ -24,6 +24,10 @@
     ${fieldErrors.age[0] }
     <br/>
 
+    Birth:<s:textfield name="birth" label="Birth"></s:textfield>
+    ${fieldErrors.birth[0] }
+    <br/>
+
     <s:submit></s:submit>
 </s:form>
 </body>
